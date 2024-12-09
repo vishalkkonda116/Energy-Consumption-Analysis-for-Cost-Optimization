@@ -5,14 +5,14 @@
 #include <string>
 #include "utils.h"
 
-// Function to load data from a CSV file
+
 std::vector<EnergyData> loadCSV(const std::string& filename) {
     std::vector<EnergyData> data;
     std::ifstream file(filename);
     std::string line;
 
     if (file.is_open()) {
-        getline(file, line); // Skip header line
+        getline(file, line); 
         while (getline(file, line)) {
             std::stringstream ss(line);
             std::string time;
@@ -30,7 +30,7 @@ std::vector<EnergyData> loadCSV(const std::string& filename) {
     return data;
 }
 
-// Function to analyze energy consumption data
+
 void analyzeData(const std::vector<EnergyData>& data) {
     double totalConsumption = 0.0;
     double peakConsumption = 0.0;
@@ -49,12 +49,12 @@ void analyzeData(const std::vector<EnergyData>& data) {
     std::cout << "Peak Usage: " << peakConsumption << " kWh at " << peakTime << "\n";
 }
 
-// Function to visualize energy consumption data
+
 void visualizeData(const std::vector<EnergyData>& data) {
     std::cout << "\nVisualization (Hourly Usage):\n";
     for (const auto& entry : data) {
         std::cout << entry.time << " | ";
-        int bars = static_cast<int>(entry.consumption * 10); // Scale bars
+        int bars = static_cast<int>(entry.consumption * 10);
         for (int i = 0; i < bars; ++i) {
             std::cout << "*";
         }
